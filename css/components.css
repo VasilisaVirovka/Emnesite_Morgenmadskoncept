@@ -1,0 +1,541 @@
+/* Valgfrie komponenter */
+.link-box:is(:hover, :focus) {
+  transform: translateY(-1px);
+}
+.card {
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.card:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+/* Footer layout */
+/* Footer blok */
+.site-footer {
+  padding: 32px 0 56px;
+}
+
+.site-footer .footer-brand {
+  display: inline-flex;
+  flex-direction: column; /* logo -> tagline -> ikoner */
+  gap: 12px;
+}
+
+/* Logo-teksten: præcis 32px og på to linjer */
+.footer-logo {
+  font-family: "Lexend", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 32px; /* som ønsket */
+  line-height: 0.9;
+  color: #111;
+}
+
+/* Tagline under logoet */
+.site-footer .tagline {
+  margin: 0;
+  font-family: "Roboto", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #2b2b2b;
+}
+
+/* Vandret række med runde ikon-chips */
+.site-footer .social {
+  display: inline-flex;
+  gap: 14px; /* afstand mellem ikoner */
+  margin-top: 6px;
+}
+
+.site-footer .social-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  background: #ebd5ad;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /*box-shadow: 0 10px 26px rgba(0, 0, 0, 0.22); blød skygge*/
+}
+
+.site-footer .social-btn img {
+  width: 86px; /* din egen SVG skaleres pænt */
+  height: 86px;
+  display: block;
+}
+
+/*Index.html --> Link-boks: Gå til opskrifter (grøn farve)*/
+
+/* Alle bokse er links med firkantet boks omkring */
+.link-box {
+  display: inline-block;
+  padding: 12px 16px;
+  border: 1px solid #111; /* boks omkring */
+  border-radius: 0; /* firkantet */
+  text-decoration: none;
+  font-weight: 600;
+  line-height: 1; /* stram linje inde i knappen */
+  color: #111;
+  background: transparent;
+  transition: filter 120ms ease, transform 120ms ease;
+}
+
+.link-box:hover {
+  transform: translateY(-1px);
+}
+
+/* Variant kun til "Gå til opskrifter" */
+.link-box--recipes {
+  background: #88d886; /* ønsket farve fylder hele boksen */
+  border-color: #88d886;
+  color: #111; /* mørk tekst for god læsbarhed */
+}
+.link-box--recipes:hover {
+  filter: brightness(0.95);
+}
+
+/* Tastaturfokus */
+.link-box:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 2px;
+}
+
+/* Header som én linje: logo (venstre) -> menu (midt) -> "Skriv ind" (helt højre) */
+.site-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap; /* pæn wrap på små skærme */
+}
+
+/* Vandret menu */
+.nav {
+  display: flex;
+  gap: 32px; /* afstand mellem punkter som i mock */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Lidt tættere linjehøjde i menupunkter (to-linjers labels) */
+.nav a {
+  text-decoration: none;
+  color: #111;
+  line-height: 1.2;
+  display: inline-block;
+}
+
+/* Skub CTA helt til højre i headerens flex-linje */
+.nav-cta {
+  margin-left: auto; /* <-- gør arbejdet */
+  display: inline-block;
+  padding: 10px 14px;
+  border: 1px solid #111; /* boks omkring */
+  border-radius: 0; /* firkantet som ønsket */
+  text-decoration: none;
+  color: #111;
+  font-weight: 600;
+  line-height: 1; /* stram tekst inde i boksen */
+  background: transparent; /* outlined boks som på billedet */
+}
+
+/* Fokus/hover for tilgængelighed og feedback */
+.nav-cta:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+.nav-cta:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 2px;
+}
+
+/*Index.html - Advocado toast*/
+.recipe {
+  /* hvis din opskrift ligger i en boks/kort, er tekstcentrering ok,
+     men listerne venstrestilles inde i boksen */
+  max-width: 34ch;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.recipe-icon {
+  display: block;
+  margin: 0 auto 8px; /* ikon over teksten med lidt luft */
+  width: 56px; /* justér efter behov */
+  height: auto;
+}
+
+/* Mellemoverskrifter som på mock */
+.recipe .section {
+  margin: 0 0 6px;
+  font-weight: 600;
+}
+
+/* Lister: få markører/nr. IND i boksen */
+.recipe .ingredients,
+.recipe .steps,
+.recipe .ingredients ul {
+  /* også nested liste */
+  list-style-position: inside; /* marker indenfor padding-box */
+  padding-left: 0; /* fjern standard indrykning */
+  margin: 0 0 10px;
+  text-align: left; /* venstrestil selve linjerne */
+}
+
+/* Bullet- og nr.-afstand */
+.recipe li {
+  margin: 4px 0;
+}
+
+/* Typografi for listerne (valgfrit pænt look) */
+.recipe .ingredients {
+  list-style: disc;
+}
+.recipe .ingredients ul {
+  list-style: disc;
+}
+.recipe .steps {
+  list-style: decimal;
+}
+
+/* Tip/note-linje nederst */
+.recipe .note {
+  text-align: left;
+  margin: 8px 0 0;
+}
+/* --- Listestil i kort/indhold: bullets og tal INDE i boksen --- */
+.grid .card ul,
+.grid .card ol,
+main ul,
+main ol {
+  list-style-position: inside; /* markør indenfor boksen */
+  padding-left: 0; /* fjern standard indrykning */
+  margin: 0 0 10px; /* lidt luft under hver liste */
+  text-align: left; /* venstrestil teksten inde i boksen */
+  /* "Hanging indent": tekstlinjer ligger pænt under markøren */
+  text-indent: -0.5em;
+  padding-inline-start: 0.5em;
+}
+
+/* Indlejrede lister */
+.grid .card ul ul,
+.grid .card ol ul,
+.grid .card ul ol,
+.grid .card ol ol,
+main ul ul,
+main ol ul,
+main ul ol,
+main ol ol {
+  list-style-position: inside;
+  padding-left: 0;
+  margin: 4px 0 0;
+  text-indent: -0.5em;
+  padding-inline-start: 0.5em;
+}
+
+/* Afstand mellem punkter */
+.grid .card li,
+main li {
+  margin: 4px 0;
+}
+
+/* Typografi (valgfrit, men pænt) */
+.grid .card ul {
+  list-style: disc;
+}
+.grid .card ol {
+  list-style: decimal;
+}
+main ul {
+  list-style: disc;
+}
+main ol {
+  list-style: decimal;
+}
+
+/*Index.html --> Den sundeste smoothie)*/
+
+/* --- Opskriftsblok: layout som i eksemplet --- */
+.recipe {
+  max-width: 34ch; /* smal, læsbar kolonne */
+  margin: 0 auto; /* centrer hele boksen */
+  text-align: center; /* overskrifter centreres */
+}
+
+/* Ikon over teksten (hvis du bruger et) */
+.recipe .recipe-icon {
+  display: block;
+  margin: 0 auto 8px;
+  width: 56px;
+  height: auto;
+}
+
+/* Sektionstitler som "Ingredienser:" og "Fremgangsmåde:" */
+.recipe .section,
+.recipe .section-title {
+  margin: 0 0 6px;
+  font-weight: 600;
+}
+
+/* Bullets: inde i boksen, venstrestillet tekst */
+.recipe ul {
+  list-style: disc;
+  list-style-position: inside; /* markør INDE i boksen */
+  padding-left: 0; /* fjern browser-indrykning */
+  margin: 0 0 10px;
+  text-align: left; /* venstrestil linjerne */
+  /* “Hanging indent”: lange linjer flugter under markøren */
+  text-indent: -0.5em;
+  padding-inline-start: 0.5em;
+}
+
+/* Under-bullets (den mindre prik i dit billede) */
+.recipe ul ul {
+  list-style: disc;
+  margin-top: 4px;
+  font-size: 0.95em; /* en anelse mindre tekst */
+}
+
+/* Afstand mellem punkter */
+.recipe li {
+  margin: 4px 0;
+}
+
+/* Metode-teksten under "Fremgangsmåde:" uden numre */
+.recipe .method,
+.recipe .note {
+  text-align: left;
+  margin: 6px 0 0;
+}
+
+/*Index.html - Skriv ind - kundeservicedame --> 3 ikoner herefter (sundhed, pris og placering)*/
+
+/* --- Ikonrækker: ikon til venstre, tekst til højre --- */
+.features {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 16px; /* afstand mellem rækker */
+}
+
+.feature-item {
+  display: grid;
+  grid-template-columns: auto 1fr; /* ikon | tekst */
+  align-items: start;
+  gap: 12px; /* afstand mellem ikon og tekst */
+}
+
+.feature-icon {
+  width: 40px; /* justér efter dine SVG’er */
+  height: auto;
+  display: block;
+}
+
+.feature-text h4 {
+  margin: 0 0 2px;
+  font-family: "Lexend", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 16px; /* matcher stilen i mock */
+  line-height: 1.2;
+}
+
+.feature-text p {
+  margin: 0;
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* linket "Skriv ind" i teksten */
+.feature-text a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+/*Index.html - Skriv ind - kundeservicedame-billede mindre*/
+
+.support-illustration {
+  width: 380px; /* justér fx 140–220px */
+  height: auto; /* bevar proportioner */
+}
+
+/* Kun Quiz_start i det 2. kort (Om quizzen) */
+.grid > .card:nth-of-type(2) img[src$="Quiz_start.svg"] {
+  width: 240px; /* justér fx 120–180px */
+  height: auto;
+  display: block;
+  margin: 8px 0;
+}
+
+/* Større ikoner i brugertyperne */
+.feature-icon {
+  width: 56px; /* fx 48, 56, 64px */
+  height: auto;
+}
+
+/* Lidt mere afstand hvis du øger ikonstørrelsen */
+.feature-item {
+  gap: 14px;
+}
+/* --- MOBIL/TABLET: få kortene på linje med teksten --- */
+@media (max-width: 1023px) {
+  /* Stop center-tekst i sektionen */
+  main .grid {
+    text-align: left !important; /* overstyr global mobil-centrering */
+    display: block !important; /* fjern center-grid hvis sat */
+    justify-items: stretch !important;
+    align-items: start !important;
+  }
+
+  /* Gør kort fuldbredde og fjern auto-centering */
+  main .grid > .card,
+  main .grid > article.card {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important; /* ingen margin-auto */
+    text-align: left !important;
+  }
+
+  /* Overskrift + intro i sektionen følger samme venstrekant */
+  main .grid > h2,
+  main .grid > h2 + p {
+    text-align: left !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Indhold inde i opskriftskort: venstrejustér alt tekst/listes */
+  .recipe .section,
+  .recipe .ingredients,
+  .recipe .steps,
+  .recipe .method,
+  .recipe .note {
+    text-align: left !important;
+  }
+
+  /* Billeder i kort må ikke auto-centreres */
+  .card .recipe-icon,
+  .card > img {
+    display: block;
+    margin: 0 0 8px 0 !important;
+    max-width: 100%;
+    height: auto;
+  }
+}
+/* Ens størrelse på opskrifts-ikoner i index.html */
+.recipe.card > img:first-child,
+.recipe.card .recipe-icon {
+  width: 160px; /* justér fx 140–180px efter smag */
+  height: auto;
+  display: block;
+  margin: 0 0 8px 0; /* lidt luft under ikonet */
+}
+/* Intermediate_fasting: gør 16:8, 24t og 48t ikoner lige store */
+.grid .card > img[src*="intermediate_fasting_16.8"],
+.grid .card > img[src*="intermediate_fasting_24_timer"],
+.grid .card > img[src*="intermediate_fasting_48_timer"] {
+  width: 160px; /* ens bredde på alle tre (justér fx 140–180px) */
+  height: auto; /* bevar proportioner */
+  display: block;
+  margin: 0 auto 8px; /* centrer ikonerne og giv lidt luft under */
+}
+/* Dobbelt størrelse (bredde-styret) */
+.grid .card > img[src*="intermediate_fasting_16.8"],
+.grid .card > img[src*="intermediate_fasting_24_timer"],
+.grid .card > img[src*="intermediate_fasting_48_timer"] {
+  width: 320px; /* før: 160px */
+  height: auto;
+  display: block;
+  margin: 0 auto 12px;
+}
+/* Lige højde på de tre opskriftskort */
+.grid {
+  align-items: stretch; /* stræk grid items til rækkehøjde */
+}
+
+.grid > .recipe.card {
+  height: 100%; /* fyld hele rækkehøjden */
+  display: flex; /* så indhold kan fordeles pænt */
+  flex-direction: column;
+  padding: 16px; /* ens indvendig luft (justér hvis du har anden padding) */
+}
+
+/* Sørg for at ikonet og titlen står pænt øverst */
+.grid > .recipe.card > img:first-child,
+.grid > .recipe.card .recipe-icon {
+  align-self: center;
+  width: 160px; /* samme ikonstørrelse for alle tre */
+  height: auto;
+}
+
+/* Skub “bund”-teksten ned, så kortene matcher i højde selv med forskelligt indhold */
+.grid > .recipe.card .note,
+.grid > .recipe.card .method {
+  margin-top: auto;
+}
+/* Ekstra luft før "Skriv ind" overskriften i grid-sektionen */
+.grid > h1 {
+  margin-top: clamp(24px, 4vw, 56px);
+}
+/* Stram afstand omkring "Ingredienser:" / "Fremgangsmåde:" labels */
+.recipe .section {
+  margin: 8px 0 4px; /* lille bottom-margin */
+  line-height: 1.4;
+}
+
+/* Fjern top-margin på første element efter label */
+.recipe .section + ol,
+.recipe .section + ul,
+.recipe .section + p {
+  margin-top: 0;
+}
+
+/* Generelt: nulstil default margin på lister i opskrifterne */
+.recipe .ingredients,
+.recipe .steps {
+  margin: 0; /* ingen ekstra top-gap */
+  padding-left: 1.2rem; /* behold indryk til bullets/tal */
+}
+
+/* (valgfrit) lidt afstand mellem list items */
+.recipe .steps li,
+.recipe .ingredients li {
+  margin: 0 0 4px;
+}
+
+/* --- Opskriftssektion: fjern hul før/efter lister --- */
+.recipe .section {
+  margin: 8px 0 4px !important; /* meget lille afstand under label */
+  line-height: 1.4;
+}
+
+/* Fjern top-margin på første element efter label (uanset om det er OL/UL/P) */
+.recipe .section + * {
+  margin-top: 0 !important;
+}
+
+/* Nulstil standard margins for lister inde i .recipe */
+.recipe ol,
+.recipe ul {
+  margin-top: 0 !important;
+  margin-bottom: 12px; /* almindelig bundluft */
+  padding-left: 1.2rem; /* behold indryk */
+}
+
+/* Lidt tættere mellem punkter */
+.recipe li {
+  margin: 0 0 4px;
+}
+/* Kun kort der indeholder Tag quizzen-billedet */
+.grid .card:has(img[src*="Tag quizzen"]) {
+  display: flex;
+  flex-direction: column;
+}
+.grid .card:has(img[src*="Tag quizzen"]) img {
+  order: 1;
+}
+.grid .card:has(img[src*="Tag quizzen"]) > h2 {
+  order: 2;
+  margin-top: 8px;
+}
